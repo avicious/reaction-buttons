@@ -2,61 +2,36 @@ import { useState } from "react";
 import { ThumbsUp, ThumbsDown } from "lucide-react";
 
 const App = () => {
-  const [likeCount, setLikeCount] = useState(50);
-  const [dislikeCount, setDislikeCount] = useState(27);
-  const [activeBtn, setActiveBtn] = useState("none");
+  const initialLikes = 50;
+  const initialDislikes = 27;
+  const [userAction, setUserAction] = useState(null);
 
   const handleReaction = (reaction) => {
-    if (activeBtn === "none") {
-      if (reaction === "like") {
-        setActiveBtn("like");
-        setLikeCount((prevLike) => prevLike + 1);
-      }
-
-      if (reaction === "dislike") {
-        setActiveBtn("dislike");
-        setDislikeCount((prevDislike) => prevDislike + 1);
-      }
-    } else if (activeBtn === "like") {
-      if (reaction === "like") {
-        setActiveBtn("none");
-        setLikeCount((prevLike) => prevLike - 1);
-      }
-
-      if (reaction === "dislike") {
-        setActiveBtn("dislike");
-        setLikeCount((prevLike) => prevLike - 1);
-        setDislikeCount((prevDislike) => prevDislike + 1);
-      }
-    } else if (activeBtn === "dislike") {
-      if (reaction === "like") {
-        setActiveBtn("like");
-        setDislikeCount((prevDislike) => prevDislike - 1);
-        setLikeCount((prevLike) => prevLike + 1);
-      }
-
-      if (reaction === "dislike") {
-        setActiveBtn("none");
-        setDislikeCount((prevDislike) => prevDislike - 1);
-      }
+    if (userAction === reaction) {
+      setUserAction(null);
+    } else {
+      setUserAction(reaction);
     }
   };
+
+  const displayLikes = initialLikes + (userAction === "like" && 1);
+  const displayDislikes = initialDislikes + (userAction === "dislike" && 1);
 
   return (
     <div className="container">
       <div className="btn-container">
         <button
-          className={`btn ${activeBtn === "like" && "like-active"}`}
+          className={`btn ${userAction === "like" && "like-active"}`}
           onClick={() => handleReaction("like")}
         >
-          <ThumbsUp /> Like {likeCount}
+          <ThumbsUp /> Like {displayLikes}
         </button>
 
         <button
-          className={`btn ${activeBtn === "dislike" && "dislike-active"}`}
+          className={`btn ${userAction === "dislike" && "dislike-active"}`}
           onClick={() => handleReaction("dislike")}
         >
-          <ThumbsDown /> Dislike {dislikeCount}
+          <ThumbsDown /> Dislike {displayDislikes}
         </button>
       </div>
     </div>
