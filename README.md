@@ -29,7 +29,7 @@ The component tracks a single variable, `userAction`, which can hold one of thre
 To prevent "state drift" (where UI counts get out of sync with backend data), the component calculates the displayed numbers during the render phase rather than updating them manually.
 
 The logic follows this formula:
-$$\text{Display Count} = \text{Initial Count} + (\text{Is Active} && 1)$$
+$$\text{Display Count} = \text{Initial Count} + \begin{cases} 1 & \text{if active} \\ 0 & \text{otherwise} \end{cases}$$
 
 | State (`userAction`) | Like Display      | Dislike Display   |
 | :------------------- | :---------------- | :---------------- |
