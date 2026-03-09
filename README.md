@@ -2,7 +2,7 @@
 
 A lightweight, accessible Like/Dislike toggle component built with React and Lucide React icons. This component manages mutually exclusive states, ensuring a user can only select one reaction at a time.
 
-## 🚀 Features
+## Features
 
 - Mutually Exclusive Logic: Clicking "Like" while "Dislike" is active automatically deselects the dislike.
 
@@ -12,7 +12,7 @@ A lightweight, accessible Like/Dislike toggle component built with React and Luc
 
 - Accessible: Designed with clear visual feedback for active states.
 
-## ⚙️ How It Works
+## How It Works
 
 The component operates on a **Single Source of Truth** principle. Instead of managing multiple independent counters, it uses a state-machine approach to ensure the UI remains predictable and bug-free.
 
@@ -41,7 +41,7 @@ The `handleReaction` function handles all transitions with a single comparison:
 - **Toggle Off:** If the user clicks "Like" while `userAction` is already `'like'`, the state resets to `null`.
 - **Switching:** If the user clicks "Dislike" while `userAction` is `'like'`, the state simply updates to `'dislike'`. Because the counts are derived from this single source, the "Like" count automatically reverts to its base value.
 
-## 🛠️ Installation & Usage
+## Installation & Usage
 
 You will need **Lucide React** for the UI icons. Install it via your preferred package manager:
 
