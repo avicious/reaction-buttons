@@ -2,6 +2,10 @@
 
 A lightweight, accessible Like/Dislike toggle component built with React and Lucide React icons. This component manages mutually exclusive states, ensuring a user can only select one reaction at a time.
 
+## Live Demo
+
+**Check out the live version of this project here:** [avicious.github.io/reaction-buttons/](https://avicious.github.io/reaction-buttons/)
+
 ## Features
 
 - Mutually Exclusive Logic: Clicking "Like" while "Dislike" is active automatically deselects the dislike.
